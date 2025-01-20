@@ -1,0 +1,61 @@
+.home-container {
+  padding: 20px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.home-content {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.home-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #0c4e34;
+}
+
+.home-content p {
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.summary-section {
+  margin: 40px 0;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .summary-section {
+  margin: 40px 0;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #252525;
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.summary-section h2 {
+  font-size: 2rem;
+  color: #0c4e34;
+  margin-bottom: 10px;
+}
+
+.summary-section p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+.highlight {
+  background: linear-gradient(to right, #20b860, #0c4e34);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}

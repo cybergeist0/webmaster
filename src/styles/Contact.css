@@ -1,0 +1,73 @@
+.page-container {
+  padding-top: 80px;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  color: #0c4e34;
+  margin-bottom: 20px;
+}
+
+.page-heading {
+  font-size: 2.0rem;
+  color: #0c4e34;
+  margin-bottom: 20px;
+}
+
+.page-content {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding-bottom: 2rem;
+}
+
+.feedback-textbox {
+  width: 90%;
+  max-width: 600px;
+  height: 100px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+  margin-bottom: 1rem;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.feedback-textbox:focus {
+  outline: none;
+  border-color: #0c4e34;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.feedback-submit {
+  background-color: #0c4e34;
+  color: white;
+  font-size: 1rem;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.feedback-submit:hover {
+  background-color: #148c5a;
+  transform: scale(1.05);
+}
+
+.feedback-submit:active {
+  transform: scale(0.98);
+}

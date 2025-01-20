@@ -1,35 +1,98 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { Suspense, lazy } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { DarkModeProvider } from "./context/DarkModeContext"; // Assuming you have this
+import SuspenseWrapper from "./components/SuspenseWrapper";
+import Spinner from "./components/Spinner";
 
-function App() {
-  const [count, setCount] = useState(0)
+// Lazy load components
+const NavbarHome = lazy(() => import("./components/NavbarHome"));
+const NavbarPages = lazy(() => import("./components/NavbarPages"));
+const Footer = lazy(() => import("./components/Footer"));
+const Home = lazy(() => import("./pages/Home"));
+const Menu = lazy(() => import("./pages/Menu"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Approach = lazy(() => import("./pages/Approach"));
+
+function AnimatedRoutes() {
+  const location = useLocation();
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <TransitionGroup>
+      <CSSTransition key={location.key} classNames="page" timeout={300}>
+        <Routes location={location}>
+          <Route
+            path="/webmaster/"
+            element={
+              <>
+                <NavbarHome />
+                <SuspenseWrapper>
+                  <Home />
+                </SuspenseWrapper>
+                <SuspenseWrapper>
+                  <Footer />
+                </SuspenseWrapper>
+              </>
+            }
+          />
+          <Route
+            path="/webmaster/menu"
+            element={
+              <>
+                <NavbarPages />
+                <SuspenseWrapper>
+                  <Menu />
+                </SuspenseWrapper>
+                <SuspenseWrapper>
+                  <Footer />
+                </SuspenseWrapper>
+              </>
+            }
+          />
+          <Route
+            path="/webmaster/contact"
+            element={
+              <>
+                <NavbarPages />
+                <SuspenseWrapper>
+                  <Contact />
+                </SuspenseWrapper>
+                <SuspenseWrapper>
+                  <Footer />
+                </SuspenseWrapper>
+              </>
+            }
+          />
+          <Route
+            path="/webmaster/approach"
+            element={
+              <>
+                <NavbarPages />
+                <SuspenseWrapper>
+                  <Approach />
+                </SuspenseWrapper>
+                <SuspenseWrapper>
+                  <Footer />
+                </SuspenseWrapper>
+              </>
+            }
+          />
+        </Routes>
+      </CSSTransition>
+    </TransitionGroup>
+  );
 }
 
-export default App
+function App() {
+  return (
+    <DarkModeProvider> {/* Wrap the entire app in the context */}
+      <Router>
+        <Suspense fallback={<Spinner />}>
+          <AnimatedRoutes />
+        </Suspense>
+      </Router>
+    </DarkModeProvider>
+  );
+}
+
+export default App;
